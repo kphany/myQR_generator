@@ -1,0 +1,83 @@
+/* static/qr_app/css/styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* In your static CSS file, e.g., style.css */
+
+.logo {
+    max-width: 100%; /* Ensures the logo does not exceed the container width */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Ensures the logo is properly rendered */
+    margin: 0 auto; /* Centers the logo horizontally */
+}
+
+/* Example for resizing specific sizes */
+.logo-small {
+    max-width: 150px; /* Adjust width as needed */
+    height: auto;
+}
+
+.logo-medium {
+    max-width: 250px;
+    height: auto;
+}
+
+.logo-large {
+    max-width: 350px;
+    height: auto;
+}
+
+
+.app-name h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

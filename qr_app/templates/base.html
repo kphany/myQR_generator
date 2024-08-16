@@ -1,0 +1,84 @@
+<!-- qr_app/templates/base.html -->
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}myQR Generator{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'qr_app/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{% url 'home' %}" class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="MyQR Generator Logo">
+                <!-- Or if you have text -->
+                <span class="text"></span>
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'generate_qr' %}">Generate QR Code</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'list_qr_codes' %}">My QR Codes</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 myQR Generator. All rights reserved.</p>
+    </footer>
+
+    <!-- Modal for enlarged QR code -->
+    <div id="qr-modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-image">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        // Get modal element
+        var modal = document.getElementById("qr-modal");
+        var modalImg = document.getElementById("modal-image");
+        var captionText = document.getElementById("caption");
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Open modal when clicking on image
+        document.querySelectorAll('.qr-image-link').forEach(item => {
+            item.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default action
+                var imgSrc = this.getAttribute('data-image-url');
+                modal.style.display = "block";
+                modalImg.src = imgSrc;
+                captionText.innerHTML = this.querySelector('img').alt;
+            });
+        });
+
+        // Close modal when clicking on close button
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // Close modal when pressing the Esc key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+              console.log('Escape key pressed'); // Debugging line
+              modal.style.display = "none";
+            }
+        });
+       
+    </script>
+</body>
+</html>

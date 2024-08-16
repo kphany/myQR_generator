@@ -1,0 +1,40 @@
+<!-- qr_app/templates/qr_app/list_qr_codes.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>My QR Codes</h2>
+    
+    {% if qr_codes %}
+        <table class="qr-codes-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Data</th>
+                    <th>Size</th>
+                    <th>Image</th>
+                    <th>Scans</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for qr_code in qr_codes %}
+                    <tr>
+                        <td>{{ qr_code.title }}</td>
+                        <td>{{ qr_code.data }}</td>
+                        <td>{{ qr_code.size }}</td>
+                        <td><img src="{{ qr_code.image.url }}" alt="{{ qr_code.title }}" class="qr-code-image" style="width: 100px; height: 100px; object-fit: cover;"></td>
+                        <td>{{ qr_code.scans }}</td>
+                        <td>
+                            <a href="{% url 'edit_qr_code' qr_code.pk %}">Edit</a> |
+                            <a href="{% url 'download_qr_code' qr_code.pk %}">Download</a> |
+                            <a href="{% url 'delete_qr_code' qr_code.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No QR codes found.</p>
+    {% endif %}
+{% endblock %}
+

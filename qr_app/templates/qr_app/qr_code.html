@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code</title>
+</head>
+<body>
+    <h1>QR Code Generated</h1>
+    <p><strong>Title:</strong> {{ qr_code.title }}</p>
+    <p><strong>Data:</strong> {{ qr_code.data }}</p>
+    <p><strong>Size:</strong> {{ qr_code.size }}</p>
+    <p><strong>Created At:</strong> {{ qr_code.created_at }}</p>
+    <img src="{{ qr_code.image.url }}" alt="QR Code">
+    <a href="{% url 'list_qr_codes' %}">Back to QR Codes List</a>
+</body>
+</html>

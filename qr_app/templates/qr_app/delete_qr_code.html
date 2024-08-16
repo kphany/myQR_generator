@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Are you sure you want to delete this QR code?</h1>
+  <img src="{{ qr_code.image.url }}" alt="QR Code" style="width: 200px; height: 200px;">
+  <p>{{ qr_code.name }}</p>
+  <p>{{ qr_code.data }}</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Delete</button>
+    <a href="{% url 'list_qr_codes' %}">Cancel</a>
+  </form>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>My QR Codes</h2>
+    <table class="qr-codes-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>QR Code</th>
+                <th>Scans</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for qr_code in qr_codes %}
+                <tr>
+                    <td>{{ qr_code.title }}</td>
+                    <td>
+                        <div class="thumbnail-container">
+                            <img src="{{ qr_code.image.url }}" alt="{{ qr_code.title }}" class="thumbnail" onclick="openModal('{{ qr_code.image.url }}')">
+                        </div>
+                    </td>
+                    <td>{{ qr_code.scans }}</td>
+                    <td>
+                        <a href="{% url 'edit_qr_code' qr_code.pk %}">Edit</a> |
+                        <a href="{% url 'download_qr_code' qr_code.pk %}">Download</a> |
+                        <a href="{% url 'delete_qr_code' qr_code.pk %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openModal(imageUrl) {
+            var modal = document.getElementById("myModal");
+            var modalImage = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImage.src = imageUrl;
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.onkeydown = function(event) {
+            if (event.key === "Escape") {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            }
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,159 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 50px; /* Adjusted for footer spacing */
+}
+
+/* Header Styling */
+header {
+    background-color: #fafafa;
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    padding: 10px;
+    margin: 0;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Navigation Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar ul li {
+    margin: 0;
+}
+
+.navbar ul li a {
+    color: #010C80;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content and Footer Styling */
+main {
+    padding: 20px;
+    margin-bottom: 50px; /* Ensure space for the footer */
+}
+
+footer {
+    background-color: #010C80;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed; /* Fixed positioning for footer */
+    bottom: 0;
+    width: 100%;
+}
+
+/* Table Styling */
+.qr-codes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.qr-codes-table th, .qr-codes-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.qr-codes-table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.qr-codes-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.qr-codes-table tr:hover {
+    background-color: #ddd;
+}
+
+/* QR Code Thumbnail Styling */
+.thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover; /* Ensures the image covers the given dimensions */
+    border: 1px solid #ddd; /* Optional border for better visibility */
+    border-radius: 4px; /* Optional rounded corners */
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8); /* Dark background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%; /* Ensure it fits well on smaller screens */
+    max-height: 80%; /* Prevent it from being too large */
+    margin: auto;
+    display: block;
+}
+
+.modal img {
+    width: auto;
+    height: auto;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsive Design for Navigation Menu */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
